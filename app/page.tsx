@@ -1,64 +1,149 @@
-import Image from "next/image";
+import Background from "@/components/Background";
+import Card from "@/components/Card";
+import MiniCard from "@/components/MiniCard";
+import Navbar from "@/components/Navbar";
+import Toggle from "@/components/Toggle";
+import { FaCaretDown } from "react-icons/fa";
 
 export default function Home() {
+  const card_one = [
+    "Unlimited Clients & Projects",
+    "Proposals",
+    "Contracts"
+  ]
+
+  const card_two = [
+    "Everything in Workflow, plus…",
+    "White-labelled client experience",
+    "Client forms and questionnaires (Now)"
+  ]
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Background */}
+      <Background />
+
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Main page -> Cards */}
+      <main className="mt-20 mx-20 flex flex-col gap-y-10 items-center">
+        <div className="flex w-5xl justify-between">
+          <div>
+            <p className="text-black text-4xl">Plans & Pricing</p>
+          </div>
+          <div className="flex gap-x-2 text-black text-xl items-center">
+            <p>Monthly</p>
+            <Toggle />
+            <p>Yearly</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="flex w-5xl justify-between">
+          <Card title={"Workflow"} cost={19} info={card_one} />
+          <Card title={"Workflow Plus"} cost={29} info={card_two} />
         </div>
+
+        <div className="flex flex-col mt-10 items-center gap-y-15 w-full">
+          <p className="text-black tracking-wider text-2xl">Super charge your work with add-ons</p>
+          <div className="flex flex-col gap-y-10">
+            <MiniCard title="Collaborators" info="Invite other users to specific projects for limited access and functionality." cost={0} />
+            <MiniCard title="Partners" info="Invite other users for full account access and company management." cost={9} />
+            <MiniCard title="Bonsai Tax" info="Track expenses and identify write-offs, and estimate quarterly taxes easily." cost={10} />
+          </div>
+        </div>
+
+        <div className="flex justify-around items-center gap-x-50 w-255 mt-10 bg-[#caf0f9]">
+          <div className="flex flex-col text-black tracking-wider text-3xl m-20">
+            <div className="flex gap-x-2">
+              <p>It's</p>
+              <p className="text-[#00b289]">your</p>
+              <p>business</p>
+            </div>
+            <div><p>and we're here to help it grow.</p></div>
+          </div>
+
+          <button className="bg-[#00b289] p-3 px-5 h-13 mr-auto rounded-sm text-white text-sm font-bold tracking-wider">
+            START FREE
+          </button>
+        </div>
+
+        {/* FAQ */}
+        <div className="flex flex-col gap-y-7 mt-5 mb-5">
+          <p className="text-[#00b289] text-2xl font-extralight tracking-wider text-center">Frequently Asked Questions</p>
+          <div className="text-black tracking-wider text-xl flex flex-col gap-y-3 w-150">
+            <div className="flex justify-between">
+              <p>How does the 14 day free trial work?</p>
+              <FaCaretDown color="lightgray" />
+            </div>
+            <div className="flex justify-between">
+              <p>Can I change plans anytime?</p>
+              <FaCaretDown color="lightgray" />
+            </div>
+            <div className="flex justify-between">
+              <p>How do I pause my Bonsai subscription?</p>
+              <FaCaretDown color="lightgray" />
+            </div>
+            <div className="flex justify-between">
+              <p>What is your refund policy?</p>
+              <FaCaretDown color="lightgray" />
+            </div>
+          </div>
+        </div>
+
+        <footer className="flex w-screen justify-around mt-20 p-10 bg-[#caf0f9] ">
+          <div className="flex flex-col gap-y-7">
+            <p className="text-black font-bold tracking-wide">PRODUCT</p>
+
+            <div className="text-gray-700 text-sm">
+              <p>Proposals</p>
+              <p>Contracts</p>
+              <p>Invoicing</p>
+            </div>
+
+            <div>
+              <p className="text-[#00b289] text-sm">Pricing</p>
+              <p className="text-black text-sm mt-2">Bonsai Reviews</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-y-7">
+            <p className="text-black font-bold tracking-wide">FREE RESOURCES</p>
+
+            <div className="text-gray-700 text-sm">
+              <p>Freelance Resources</p>
+              <p>Freelance Blogs by Bonsai</p>
+              <p>How to Write a Contract</p>
+            </div>
+
+            <div>
+              <p className="text-black font-bold tracking-wide text-sm">Templates</p>
+              <div className="mt-2">
+                <div className="text-black text-sm flex items-center gap-x-1">
+                  <p>Invoice Templates</p>
+                  <FaCaretDown color="gray" />
+                </div>
+                <div className="text-black text-sm flex items-center gap-x-1">
+                  <p>Proposal Templates</p>
+                  <FaCaretDown color="gray" />
+                </div>
+                <div className="text-black text-sm flex items-center gap-x-1">
+                  <p>Contract Templates</p>
+                  <FaCaretDown color="gray" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-y-7">
+            <p className="text-black font-bold tracking-wide">BONSAI</p>
+            <div className="text-sm text-black">
+              <p>About</p>
+              <p>Careers</p>
+              <p>Support</p>
+            </div>
+          </div>
+        </footer>
+
       </main>
     </div>
   );
